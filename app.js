@@ -66,6 +66,8 @@ app.use(csrfToken)
 app.use(flash())
 
 
+
+
 app.use((req,res,next)=>{
     res.locals.isAuthendicated = req.session.isLoggedIn
     res.locals.csrfToken = req.csrfToken()
