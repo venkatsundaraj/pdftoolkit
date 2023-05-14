@@ -51,6 +51,9 @@ const fileFilter = (req,file,cb)=>{
 app.set('view engine', 'ejs')
 app.set('views', 'views')
 
+/*This is the practice for git pull request*/
+/*This is the practice for git pull request for test branch*/
+
 
 
 // storage:fileStorage,fileFilter:fileFilter
