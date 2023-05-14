@@ -1,0 +1,43 @@
+<%- include('../layouts/header.ejs')%>
+</head>
+<body>
+    <%- include('../layouts/navigation.ejs')%>
+    <% if(errorMessage) { %>
+    <h2 style="text-align: center;"><%= errorMessage %></h2>
+    <% } %>
+    <form method="POST" action="/signup" novalidate>
+      <div>
+        <div>
+          <label for="email">Email</label>
+           <input 
+           class="<%= validationErrors.find(err=>err.path === 'email') ? 'invalid' : '' %>"
+           type="email" 
+           id="email" 
+           name="email"  
+           value="<%= oldInput.email %>"/>
+        </div>
+       <div>
+          <label for="password">Password</label>
+           <input 
+           class="<%= validationErrors.find(err=>err.path==='password') ? 'invalid' : '' %>"
+           type="password" 
+           id="password" 
+           name="password" 
+           value="<%= oldInput.password %>"/>
+        </div>
+       <div>
+          <label for="confirmpassword">Confirm Password</label>
+           <input 
+           class="<%= validationErrors.find(err=>err.path==='confirmpassword') ? 'invalid' : '' %>"
+           type="text" 
+           id="confirmpassword" 
+           name="confirmpassword" 
+           value="<%= oldInput.confirmPassword %>"/>
+        </div>
+         <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+          <button class="btn" type="submit">Sign up</button>
+             
+      </div>
+        
+    </form>
+<%- include('../layouts/footer.ejs')%>

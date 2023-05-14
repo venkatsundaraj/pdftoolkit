@@ -1,0 +1,30 @@
+<%- include('../layouts/header.ejs')%>
+</head>
+<body>
+    <%- include('../layouts/navigation.ejs')%>
+    <% if(errorMessage) { %>
+    <h2 style="text-align: center;"><%= errorMessage %></h2>
+    <% } %>
+    <form method="POST" action="/login-user">
+      <div>
+        <div>
+          <label for="email">Email</label>
+           <input
+           class="<%= validationErros.param==='email' ? 'invalid' : '' %>"
+           type="text" id="email" name="email"  value="<%= oldInput.email %>"/>
+        </div>
+       <div>
+          <label for="password">Password</label>
+          
+           <input
+           class="<%= validationErros.param==='password' ? 'invalid' : '' %>"
+            type="text" id="password" name="password" value="<%= oldInput.password %>"/>
+        </div>
+          <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+          <button class="btn" type="submit">Submit</button>
+      </div>
+        <div>
+          <a href="/reset-password">Reset Password</a>
+        </div>
+    </form>
+<%- include('../layouts/footer.ejs')%>

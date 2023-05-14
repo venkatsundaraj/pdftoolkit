@@ -1,0 +1,23 @@
+<%- include('../layouts/header.ejs')%>
+</head>
+<body>
+    <%- include('../layouts/navigation.ejs')%>
+    <% if(cartProducts.length > 0) { %>
+        <% cartProducts.forEach(item=> { %>
+            <h1><%= item.productId.title %>( <%= item.quantity %> ) </h1>
+            <form method="POST" action="/remove-cart-product">
+                <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+                <input type="hidden" value="<%= item.productId._id %>" name="productId"/>
+                <button class="btn">Remove</button>
+            </form>
+            
+        <% }) %>
+        <form method="POST" action="/add-to-bag">
+               <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+                <input type="hidden" value="item.productId._id" name="productId"/>
+                <button class="btn" type="submit">Add to Bag</button>
+            </form>
+        <% } else { %>
+            <h1>No cart products was found</h1>
+        <% } %>
+<%- include('../layouts/footer.ejs')%>

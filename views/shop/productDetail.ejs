@@ -1,0 +1,18 @@
+<%- include('../layouts/header.ejs')%>
+</head>
+<body>
+    <%- include('../layouts/navigation.ejs')%>
+    <div class="product-details">
+        <h1><%= product.title %></h1>
+        <img src="/<%= product.imageUrl %>"
+        <h4><%= product.price %></h4>
+        <p><i><%= product.description %></i></p>
+        <div style="width:100%">
+            <% if(isAuthendicated) {%>
+              <%- include('../layouts/add-to-cart.ejs')%>
+            <% } %>
+        </div>
+        
+    </div>
+    
+<%- include('../layouts/footer.ejs')%>

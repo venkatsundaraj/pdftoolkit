@@ -1,0 +1,25 @@
+ <%- include('../layouts/header.ejs') %>
+  </head>
+  <body>
+    <%- include('../layouts/navigation.ejs') %>
+    <article>
+    <% if(products.length > 0) { %> <% for (let product of products) { %>
+          <div>
+            <h1><%= product.title %></h1>
+            <img src="/<%= product.imageUrl %>" alt="<%= product.value %>" style="width:60%;height:60%;" title="title"/>
+            <h3>$<%= product.price %></h3>
+            <p><%= product.description %></p>
+            <a class="btn" href="/admin/edit-product/<%= product._id %>?edit=true">Edit</a>
+            <form style="margin-top:0;" action="/admin/delete-product/" method="POST">
+              <input type="hidden" value="<%= product._id %>" name="productId"/>
+              <button class="btn">Delete</button>
+              <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+            </form>
+            
+          </div>
+    <% } %> <% } else { %>
+         <h1>No products has been found</h1>
+    <% } %>
+      </article>
+  <%- include('../layouts/footer.ejs')%>
+ 

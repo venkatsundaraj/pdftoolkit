@@ -1,0 +1,29 @@
+<%- include('../layouts/header.ejs') %>
+  </head>
+  <body>
+    <%- include('../layouts/navigation.ejs') %>
+    <form action="/product" method="POST">
+      <div>
+        <div>
+          <label for="name">Name</label>
+           <input type="text" id="name" name="name"/>
+        </div>
+       <div>
+          <label for="image">Image URL</label>
+           <input type="text" id="image" name="imageUrl"/>
+        </div>
+        <div>
+          <label for="amount">Amount</label>
+           <input type="text" id="amount" name="amount"/>
+        </div>
+        <div>
+          <label for="description">Description</label>
+           <input type="text" id="description" name="description"/>
+        </div>
+        <form action="/add-to-product" method="POST">
+          <button class="btn" type="submit">Add-product</button>
+        </form>       
+      </div>
+        
+    </form>
+  <%- include('../layouts/footer.ejs')%>

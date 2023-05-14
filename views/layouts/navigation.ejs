@@ -1,0 +1,63 @@
+<nav class="product-nav">
+  <ul>
+    <li>
+      <a href="/" class="<%= path ==='/' ? 'active' : '' %>">Home</a>
+    </li>
+    <!-- <li>
+      <a href="/checkout" class="<%= path ==='shop/checkout' ? 'active' : '' %>"
+        >Checkout</a
+      >
+    </li> -->
+    <li>
+      <a
+        href="/product-list"
+        class="<%= path ==='shop/productList' ? 'active' : '' %>"
+        >Products List</a
+      >
+    </li>
+    <% if(isAuthendicated) {%>
+    <li>
+      <a href="/cart" class="<%= path ==='shop/cart' ? 'active' : '' %>"
+        >Cart</a
+      >
+    </li>
+    <li>
+      <a href="/orders" class="<%= path ==='shop/orders' ? 'active' : '' %>"
+        >Orders</a
+      >
+    </li>
+    <% } %> <% if(isAuthendicated) {%>
+    <li>
+      <form action="/logout" method="post">
+        <input type="hidden" value="<%= csrfToken %>" name="_csrf" />
+        <button type="submit">Logout</button>
+      </form>
+    </li>
+
+    <li>
+      <a
+        href="/admin/all-products"
+        class="<%= path === 'admin/all-products' ? 'active' : '' %>"
+        >Admin Products</a
+      >
+    </li>
+
+    <li>
+      <a
+        href="/admin/add-product"
+        class="<%= path === 'admin/add-product' ? 'active' : '' %>"
+        >Add-product</a
+      >
+    </li>
+    <% } else { %>
+    <li>
+      <a href="/login" class="<%= path ==='/login' ? 'active' : '' %>">login</a>
+    </li>
+    <li>
+      <a href="/signup" class="<%= path ==='/signup' ? 'active' : '' %>"
+        >Sign In</a
+      >
+    </li>
+    <% } %>
+  </ul>
+</nav>
